@@ -1,0 +1,26 @@
+<body>
+    <header id="pageHeader">
+      <p>
+        <% if current_user %>
+          Welcome, <%= current_user.name %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+        <% else %>
+          <%= link_to 'Log In', login_path %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to 'Sign Up', new_user_path %>
+        <% end %>
+      </p>
+    </header>
+    <article id="mainArticle">
+        <%= render 'form', event: @event %>
+
+        <%= link_to 'Back', houses_path %>  
+    </article>
+    <nav id="mainNav">
+      <h1>Dashboard</h1>
+      <h3><%= link_to 'Create New Event', new_event_path %></h3>
+      <h3><%= link_to 'My Events', events_path %></h3>
+    </nav>
+    <footer id="pageFooter">Footer</footer>
+</body>
