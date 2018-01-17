@@ -27,7 +27,10 @@ class EventsController < ApplicationController
     end
 
     def update
-        
+        @event = Event.find(params[:id])
+        @event.update_attributes(event_params)
+
+        redirect_to edit_event_path(@event)
     end
 
     def destroy
@@ -42,6 +45,6 @@ class EventsController < ApplicationController
   
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-    params.require(:event).permit(:title, :location, :duration, :chosen_slot)
+        params.require(:event).permit(:title, :location, :duration, :chosen_slot)
     end
   end
