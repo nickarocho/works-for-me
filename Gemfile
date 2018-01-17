@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Calendar gem. Read more: https://github.com/excid3/simple_calendar/blob/master/README.md
+gem "simple_calendar", "~> 2.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
