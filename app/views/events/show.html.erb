@@ -1,0 +1,11 @@
+<div>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</div>
+<div>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</div>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

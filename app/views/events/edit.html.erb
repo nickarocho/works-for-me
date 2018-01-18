@@ -1,23 +1,84 @@
 <%= form_for @event do |f| %>
     <div class="event">
+
+    
         <div>
             <%= f.label :title %>
             <%= f.text_field :title %>
-        </div>
-        <div>
+            <br>
             <%= f.label :location %>
             <%= f.text_field :location %>
         </div>
         <div>
-            <p>Add some possible time slots</p>
-            <p><%= select_date Time.now, prefix: :date_slot %></p>
-            <p><%= select_time Time.now, prefix: :start_time %></p>
-            <p><%= select_time Time.now, prefix: :end_time%></p>
+            <h3>Add some possible time slots:</h3>
+            <p>Date: <%= select_date Time.now, prefix: :date, order: [:month, :day, :year]%></p>
+            <p>Start Time: 
+                <select id="start_time_hour" name="start_time[hour]">
+                    <option value="12">12</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+                <select id="start_time_minute" name="start_time[minute]">
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select id="start_day_or_night" name="start_day_or_night">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+            </p>
+            <p>End Time: 
+                <select id="end_time_hour" name="end_time[hour]">
+                    <option value="12">12</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+                <select id="end_time_minute" name="end_time[minute]">
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select id="end_day_or_night" name="end_day_or_night">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+        </p>
+        <%= f.submit 'Add'%>
         </div>
-        <%= f.submit 'Add Possible Time'%>
+        <%= link_to 'Done', event_path %>
     </div>
 <% end %>
+
+
         
-<%= month_calendar(start_time: :start_date, end_time: :end_date) do |date| %>
-    <%= date.day %>
-<% end %>
+<%= month_calendar do |date| %>
+        <%= date.day %>
+        <p class="available-time"><%@event.availabilities.each do |avail|%>
+            <%if avail.start.year == date.year && avail.start.month == date.month && avail.start.day == date.day%>
+                <%= avail.start.localtime.strftime("%l:%M%P") %> - <%= avail.end.localtime.strftime("%l:%M%P") %>
+        </p>
+            <% end %>
+        <% end %>
+      
+    <% end %>
