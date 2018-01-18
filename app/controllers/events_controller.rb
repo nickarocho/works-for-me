@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     end
     
     def edit
-        @availabilities = Event.find(params[:id]).availabilities.first
+        @availabilities = Event.find(params[:id]).availabilities
     end
     
     def create
