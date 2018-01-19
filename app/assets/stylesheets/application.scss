@@ -147,7 +147,7 @@ td.events {
 td {
   font-size: 22px;
   line-height: 2em;
-  text-align: center;
+  padding-right: 15px;
 }
 
 a {
@@ -158,6 +158,10 @@ a {
     text-decoration: none;
     cursor: pointer;
     margin-top: 20px;
+}
+
+a:hover {
+  color: rgba(240, 59, 62, 0.646)
 }
 
 .available-time {
@@ -193,6 +197,47 @@ div.event {
   border-radius: 5px;
 }
 
+.done a:hover {
+  background-color: rgba(240, 59, 62, 0.646);
+}
+
+.next-btn {
+  color: white;
+  height: 40px;
+  width: 90px;
+  background-color: #113843;
+  margin: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.next-btn:hover {
+  background-color: #1138439f;
+  cursor: pointer;
+}
+
+.add-btn {
+  color: white;
+  height: 40px;
+  background-color: #12964d;
+  margin: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.add-btn:hover {
+  background-color: #12964dcd;
+  cursor: pointer;
+}
+
 .edit a {
   display: inline-block;
   text-decoration: none;
@@ -205,13 +250,14 @@ div.event {
   border-radius: 5px;
 }
 
-.done a:hover {
-  background-color: rgba(240, 59, 62, 0.646);
+.tight {
+  padding: 10px;
 }
 
 #alert {
   font-weight: 500;
   color: #F03B3D;
+  margin: 0;
 }
 
 div.home-button {
@@ -247,6 +293,11 @@ div.home-button:hover {
   grid-area: d;
 }
 
+#welcome {
+  display: flex;
+  font-size: 20px;
+}
+
 
 /* FORM STYLES */
 label {
@@ -269,6 +320,7 @@ label {
   flex-direction: column;
   width: 200px;
   margin: 0 auto;
+  height: 50px;
 }
 
 input {
