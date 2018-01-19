@@ -1,13 +1,18 @@
 <%= form_for @event do |f| %>
     <div class="event">
 
-    
         <div>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-            <br>
-            <%= f.label :location %>
-            <%= f.text_field :location %>
+            <p>
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+            </p>
+            <p>
+                <%= f.label :location %>
+                <%= f.text_field :location %>
+            </p>
+            <p class="submit">
+                <%= f.submit 'Save'%>
+            </p>
         </div>
         <div>
             <h3>Add some possible time slots:</h3>
@@ -64,19 +69,23 @@
                     <option value="pm">pm</option>
                 </select>
         </p>
-        <%= f.submit 'Add'%>
+        <p class="submit">
+            <%= f.submit 'Add'%>
+        </p>
         </div>
-        <%= link_to 'Done', event_path %>
+        <div id="done">
+            <%= link_to 'Done', event_path %>
+        </div>
+<h5>Link to join this event: <%= @invite_url %></h5>
     </div>
 <% end %>
-
-
         
 <%= month_calendar do |date| %>
         <%= date.day %>
         <p class="available-time"><%@event.availabilities.each do |avail|%>
             <%if avail.start.year == date.year && avail.start.month == date.month && avail.start.day == date.day%>
                 <%= avail.start.localtime.strftime("%l:%M%P") %> - <%= avail.end.localtime.strftime("%l:%M%P") %>
+                <%= link_to 'Delete', availability_path(avail), method: :delete %>
         </p>
             <% end %>
         <% end %>

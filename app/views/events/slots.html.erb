@@ -1,0 +1,10 @@
+<h1>Welcome</h1>
+
+<p>Select the times that work for you</p>
+
+<%= form_for @event do |f| %>
+    <p class="available-time"><%@event.availabilities.each do |avail|%>
+        <%= avail.start.localtime.strftime("%l:%M%P") %> - <%= avail.end.localtime.strftime("%l:%M%P") %>
+    </p>
+    <% end %>
+<% end %>

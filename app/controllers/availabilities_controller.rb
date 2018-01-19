@@ -11,7 +11,7 @@ class AvailabilitiesController < ApplicationController
     def destroy
         @availability = Availability.find(params[:id])
         @availability.destroy
-        redirect_to edit_event_path(params[:eventid]), notice: 'Possible time deleted.'
+        redirect_to edit_event_path(@availability.event)
     end
 
 end

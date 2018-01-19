@@ -14,18 +14,22 @@ class SessionsController < ApplicationController
             # Successful log in!
             session[:user_id] = user.id
             # notice: is a special flash[:notice] accessor
-            redirect_to dashboard_path, notice: 'Logged in!'
+            redirect_to events_path, notice: 'Logged in!'
         else
             # flash.now is used for messaging
             # during the CURRENT request
             flash.now.alert = 'Invalid login credentials - try again!'
-            render :new
+            render "sessions/new"
         end
     end
 
     def destroy
         session[:user_id] = nil
         redirect_to login_path, notice: "Logged out!"
+    end
+
+    def redirect
+        redirect_to login_path
     end
 
 end

@@ -1,15 +1,14 @@
-<article id="mainArticle">
+<div class="block">
     <%= form_for @event do |f| %>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </div>
-    <div>
-        <%= f.label :location %>
-        <%= f.text_field :location %>
-    </div>
-    <%= f.submit "Next" %>
-</article>
-<% end %>
-
-<%= link_to 'Cancel', events_path %>
+        <div>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+        </div>
+        <div>
+            <%= f.label :location %>
+            <%= f.text_field :location %>
+        </div>
+        <%= f.submit "Next" %>
+    <% end %>
+    <%= link_to 'Cancel', events_path %>
+</div>

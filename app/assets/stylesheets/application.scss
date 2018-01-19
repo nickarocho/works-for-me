@@ -37,8 +37,8 @@
       "header header header"
       "nav article nav"
       "footer footer footer" !important;
-    grid-template-rows: 60px 1fr 60px;
-    grid-template-columns: 30% 1fr;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-columns: 30% 1fr 30%;
     grid-gap: 5px;
     height: 100vh;
     margin: 0;
@@ -61,13 +61,21 @@
   }
   #mainArticle { 
     grid-area: article;      
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  // grid-gap: 10px;
+  grid-template-areas: 
+    "a a b"
+    "a a b"
+    "c d d";
   }
   article#login {
-    grid-area: article;      
+    grid-area: article;
+    width: 50%;
+    padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -97,6 +105,12 @@ h3 {
   font-size: 18px;
 }
 
+th {
+  padding: 0 60px;
+  text-align: left;
+  align: left;
+}
+
 a {
     font-family: ff-enzo-web, sans-serif;
     font-style: normal;
@@ -117,21 +131,69 @@ div.event {
   align-items: left;
 }
 
+#done a {
+  display: block;
+  height: 100px;
+  // margin: 0 auto;
+  text-decoration: none;
+  text-align: center;
+}
+
+#alert {
+  font-weight: 500;
+  color: rgb(135, 20, 20);
+}
+
+.item1 {
+  grid-area: a;
+}
+.item2 {
+  grid-area: b;
+}
+.item3 {
+  grid-area: c;
+}
+.item4 {
+  grid-area: d;
+}
+
 
 /* FORM STYLES */
 label {
-    width: 5em;
-    float: left;
-    text-align: right;
-    margin-right: 1em;
-    display: block;
-  }
+  width: 5em;
+  text-align: center;
+  margin: 10px auto;
+  display: inline;
+}
 
-  div.submit {
-      display: block;
-      float: left;
-      margin-right: 0;
-  }
+#create-account-btn {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50px;
+}
 
   
 /* CALENDAR STYLES */

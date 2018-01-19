@@ -7,10 +7,9 @@ Rails.application.routes.draw do
     resources :availabilities, shallow: true
   end
 
-  resources :sessions, only: [:new, :create, :destroy]
+  get '/events/:id/join', to: 'events#join'
 
-  get '/dashboard', to: 'users#dashboard'
-
+  resources :sessions, only: [:create, :destroy]
   get '/profile', to: 'users#show'
   patch '/profile', to: 'users#update'
   get '/profile/edit', to: 'users#edit'
@@ -18,5 +17,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
   
-  
+  get '/possibilities', to: 'events#show'
+
+  get '/sessions', to: 'sessions#redirect'
+
 end

@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-    before_action :authorize, except: [:index, :show]
+    before_action :authorize, except: [:show]
     before_action :set_event, only: [:show, :edit, :update, :destroy]
     
     def index
-        @user_events = Event.where(:user_id => current_user)
+        @events = current_user.events
     end
     
     def show
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     
     def edit
         @availabilities = Event.find(params[:id]).availabilities
+        @invite_url = "http://#{request.host}:3000/events/#{params[:id]}/join" 
     end
     
     def create
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
         @event.availabilities.create({
             start: Time.new(dt[:year], dt[:month], dt[:day], st[:hour].to_i + (params[:start_day_or_night] == "pm" && st[:hour] != "12" ? 12 : 0 ), st[:minute]).utc,
         end: Time.new(dt[:year], dt[:month], dt[:day], et[:hour].to_i + (params[:end_day_or_night] == "pm" && et[:hour] != "12" ? 12 : 0 ), et[:minute]).utc
-    })
+        })
         redirect_to edit_event_path(@event)
     end
 
@@ -47,6 +48,15 @@ class EventsController < ApplicationController
         # @availability.destroy
         # redirect_to events_url, notice: 'Possible time deleted.'
 
+    end
+
+    def slots
+        set_event
+    end
+
+    def join
+        current_user.events_attending << Event.find(params[:id])
+        redirect_to profile_path
     end
 
     private
