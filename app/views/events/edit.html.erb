@@ -9,75 +9,75 @@
                 <%= f.text_field :location %>
             </p>
         </div>
-        <br>
-        <div class="tight">
-            <h3>Add some possible time slots:</h3>
-            <p class="selection">Date: 
-            <br>
-            <%= select_date Time.now, prefix: :date, order: [:month, :day, :year]%></p>
-            <p class="selection">Start Time: <br>
-                <select id="start_time_hour" name="start_time[hour]">
-                    <option value="12">12</option>
-                    <option value="01">1</option>
-                    <option value="02">2</option>
-                    <option value="03">3</option>
-                    <option value="04">4</option>
-                    <option value="05">5</option>
-                    <option value="06">6</option>
-                    <option value="07">7</option>
-                    <option value="08">8</option>
-                    <option value="09">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                </select>
-                <select id="start_time_minute" name="start_time[minute]">
-                    <option value="00">00</option>
-                    <option value="15">15</option>
-                    <option value="30">30</option>
-                    <option value="45">45</option>
-                </select>
-                <select id="start_day_or_night" name="start_day_or_night">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
-                </select>
-            </p>
-            <p class="selection">End Time: 
-            <br>
-                <select id="end_time_hour" name="end_time[hour]">
-                    <option value="12">12</option>
-                    <option value="01">1</option>
-                    <option value="02">2</option>
-                    <option value="03">3</option>
-                    <option value="04">4</option>
-                    <option value="05">5</option>
-                    <option value="06">6</option>
-                    <option value="07">7</option>
-                    <option value="08">8</option>
-                    <option value="09">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                </select>
-                <select id="end_time_minute" name="end_time[minute]">
-                    <option value="00">00</option>
-                    <option value="15">15</option>
-                    <option value="30">30</option>
-                    <option value="45">45</option>
-                </select>
-                <select id="end_day_or_night" name="end_day_or_night">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
-                </select>
-        </p>
-        <p class="submit"><%= f.submit 'Add Time Slot', :class => 'add-btn' %></p>
-        <br>
-        </div>
-        <br>
-        <div>
-            <h3><strong>Copy this link to send an invite: </strong></h3>
-            <p><a><%= @invite_url %></a></p>
-        </div>
-            <p class="done"><%= link_to 'Done', event_path %></p>
     </div>
+    <br>
+    <div class="tight">
+        <h3>Add some possible time slots:</h3>
+        <p class="selection">Date: 
+        <br>
+        <%= select_date Time.now, prefix: :date, order: [:month, :day, :year]%></p>
+        <p class="selection">Start Time: <br>
+            <select id="start_time_hour" name="start_time[hour]">
+                <option value="12">12</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+            <select id="start_time_minute" name="start_time[minute]">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+            <select id="start_day_or_night" name="start_day_or_night">
+                <option value="am">am</option>
+                <option value="pm">pm</option>
+            </select>
+        </p>
+        <p class="selection">End Time: 
+        <br>
+            <select id="end_time_hour" name="end_time[hour]">
+                <option value="12">12</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+            <select id="end_time_minute" name="end_time[minute]">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+            <select id="end_day_or_night" name="end_day_or_night">
+                <option value="am">am</option>
+                <option value="pm">pm</option>
+            </select>
+        </p>
+        <%= f.submit 'Add Time Slot', :class => 'add-btn' %>
+        <br>
+        <br>
+    </div>
+    <div>
+        <h3><strong>Copy this link to send an invite: </strong></h3>
+        <p><a><%= @invite_url %></a></p>
+    </div>
+        <p class="done"><%= link_to 'Done', event_path %></p>
 <% end %>
         
     <div>
