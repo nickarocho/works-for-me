@@ -10,10 +10,10 @@
             <%= f.text_field :location %>
         </div>
         <div>
-            <%= f.submit "Next" %>
+            <%= f.submit "Next", :class => 'next-btn' %>
         </div>
     <% end %>
     <div>
-        <%= link_to 'Cancel', events_path %>
+        <p class="done"><%= link_to 'Cancel', events_path %></p>
     </div>
 </div>

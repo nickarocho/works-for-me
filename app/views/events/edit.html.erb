@@ -1,21 +1,16 @@
 <%= form_for @event do |f| %>
     <div class="event">
         <h1><%= @event.title %></h1>
-        <div>
-            <p class="selection">Edit Title:
-            <br>
+        <div class="tight">
+            <p class="selection">Edit Title:<br>
                 <%= f.text_field :title %>
             </p>
-            <p class="selection">Edit Location:
-            <br>
+            <p class="selection">Edit Location:<br>
                 <%= f.text_field :location %>
-            </p>
-            <p class="submit">
-                <%= f.submit 'Save Changes'%>
             </p>
         </div>
         <br>
-        <div>
+        <div class="tight">
             <h3>Add some possible time slots:</h3>
             <p class="selection">Date: 
             <br>
@@ -73,7 +68,7 @@
                     <option value="pm">pm</option>
                 </select>
         </p>
-        <p class="submit"><%= f.submit 'Add Time Slot'%></p>
+        <p class="submit"><%= f.submit 'Add Time Slot', :class => 'add-btn' %></p>
         <br>
         </div>
         <br>

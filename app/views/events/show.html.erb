@@ -10,7 +10,7 @@
         <h3>Possible Times</h3>
         <ul>
           <%@event.availabilities.each do |avail|%>
-            <li class="avail-slots"><%= avail.start.localtime.strftime("%c") %> - <%= avail.end.localtime.strftime("%c") %> | <%= link_to 'Delete', availability_path(avail), method: :delete %></li>
+            <li class="avail-slots"><%= avail.start.localtime.strftime("%c") %> - <%= avail.end.localtime.strftime("%c") %> (<%= avail.approveds.count %>)| <%= link_to 'Delete', availability_path(avail), method: :delete %></li>
           <% end %>
         </ul>
     <% end %>

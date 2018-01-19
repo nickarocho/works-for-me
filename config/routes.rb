@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update]
   
   resources :events do
-    resources :availabilities, shallow: true
+    resources :availabilities, shallow: true do
+      resources :approveds, only: [:create, :destroy]
+    end
   end
+
+
 
   get '/events/:id/join', to: 'events#join'
 

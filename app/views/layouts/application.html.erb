@@ -12,15 +12,16 @@
   <% if !list_of_paths.include?(current_uri) %>
     <header id="pageHeader">
         <% if current_user %>
-          <p>Welcome, <%= current_user.name %>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+            <p>
+              Welcome, <%= current_user.name %>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
         <% else %>
-          <%= link_to 'Log In', login_path %>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <%= link_to 'Sign Up', new_user_path %></p>
+              <%= link_to 'Log In', login_path %>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <%= link_to 'Sign Up', new_user_path %></p>
         <% end %>
-      </p>
+            </p>
     </header>
     <article id="mainArticle">
       <%= yield %>
