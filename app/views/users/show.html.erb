@@ -1,5 +1,17 @@
-<h1>Events Attending</h1>
-
-<% @events.each do |e| %>
-    <%= e.title %>
-<% end %>
+<div class="item1">
+    <h1>Events I'm Invited To</h1>
+<% if @events.length == 0 %>
+    <h3>Hmm... no events here yet.<br>
+    <p class="done"><%= link_to 'create one', new_event_path %></h3>
+  <% else %>
+        <% @events.each do |e| %>
+            <h2>- <%= e.title %></h2>
+            <ul>
+            <h3>Any of these times work for you?</h3>
+            <% e.availabilities.each do |avail| %>
+                <li class="avail-slots"><%= avail.start.localtime.strftime("%c") %> - <%= avail.end.localtime.strftime("%c") %></li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+</div>

@@ -1,22 +1,26 @@
 <%= form_for @event do |f| %>
     <div class="event">
+        <h1><%= @event.title %></h1>
         <div>
-            <p>
-                <%= f.label :title %>
+            <p class="selection">Edit Title:
+            <br>
                 <%= f.text_field :title %>
             </p>
-            <p>
-                <%= f.label :location %>
+            <p class="selection">Edit Location:
+            <br>
                 <%= f.text_field :location %>
             </p>
             <p class="submit">
-                <%= f.submit 'Save'%>
+                <%= f.submit 'Save Changes'%>
             </p>
         </div>
+        <br>
         <div>
             <h3>Add some possible time slots:</h3>
-            <p>Date: <%= select_date Time.now, prefix: :date, order: [:month, :day, :year]%></p>
-            <p>Start Time: 
+            <p class="selection">Date: 
+            <br>
+            <%= select_date Time.now, prefix: :date, order: [:month, :day, :year]%></p>
+            <p class="selection">Start Time: <br>
                 <select id="start_time_hour" name="start_time[hour]">
                     <option value="12">12</option>
                     <option value="01">1</option>
@@ -42,7 +46,8 @@
                     <option value="pm">pm</option>
                 </select>
             </p>
-            <p>End Time: 
+            <p class="selection">End Time: 
+            <br>
                 <select id="end_time_hour" name="end_time[hour]">
                     <option value="12">12</option>
                     <option value="01">1</option>
@@ -68,17 +73,19 @@
                     <option value="pm">pm</option>
                 </select>
         </p>
-        <p class="submit">
-            <%= f.submit 'Add'%>
-        </p>
+        <p class="submit"><%= f.submit 'Add Time Slot'%></p>
+        <br>
         </div>
-        <div id="done">
-            <%= link_to 'Done', event_path %>
+        <br>
+        <div>
+            <h3><strong>Copy this link to send an invite: </strong></h3>
+            <p><a><%= @invite_url %></a></p>
         </div>
-<h5>Link to join this event: <%= @invite_url %></h5>
+            <p class="done"><%= link_to 'Done', event_path %></p>
     </div>
 <% end %>
         
+    <div>
 <%= month_calendar do |date| %>
         <%= date.day %>
         <p class="available-time"><%@event.availabilities.each do |avail|%>
@@ -88,5 +95,6 @@
         </p>
             <% end %>
         <% end %>
-      
     <% end %>
+</div>
+</div>

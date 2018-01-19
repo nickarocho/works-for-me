@@ -7,6 +7,7 @@ class EventsController < ApplicationController
     end
     
     def show
+        @invite_url = "http://#{request.host}:3000/events/#{params[:id]}/join"
     end
     
     def new
@@ -47,7 +48,6 @@ class EventsController < ApplicationController
         redirect_to events_url, notice: 'Event was successfully destroyed.'
         # @availability.destroy
         # redirect_to events_url, notice: 'Possible time deleted.'
-
     end
 
     def slots
