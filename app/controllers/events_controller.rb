@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :authorize, except: [:show]
+    before_action :authorize
     before_action :set_event, only: [:show, :edit, :update, :destroy]
     
     def index
@@ -27,7 +27,6 @@ class EventsController < ApplicationController
         else
             render :new
         end
-        
     end
     
     def update
@@ -46,8 +45,6 @@ class EventsController < ApplicationController
     def destroy
         @event.destroy
         redirect_to events_url, notice: 'Event was successfully destroyed.'
-        # @availability.destroy
-        # redirect_to events_url, notice: 'Possible time deleted.'
     end
 
     def slots

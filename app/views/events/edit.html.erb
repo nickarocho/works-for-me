@@ -43,7 +43,7 @@
             </select>
         </p>
         <p class="selection">End Time: 
-        <br>
+            <br>
             <select id="end_time_hour" name="end_time[hour]">
                 <option value="12">12</option>
                 <option value="01">1</option>
@@ -77,19 +77,19 @@
         <h3><strong>Copy this link to send an invite: </strong></h3>
         <p><a><%= @invite_url %></a></p>
     </div>
-        <p class="done"><%= link_to 'Done', event_path %></p>
+    <p class="done"><%= link_to 'Done', event_path %></p>
 <% end %>
         
-    <div>
-<%= month_calendar do |date| %>
+<div>
+    <%= month_calendar do |date| %>
         <%= date.day %>
-        <p class="available-time"><%@event.availabilities.each do |avail|%>
-            <%if avail.start.year == date.year && avail.start.month == date.month && avail.start.day == date.day%>
-                <%= avail.start.localtime.strftime("%l:%M%P") %> - <%= avail.end.localtime.strftime("%l:%M%P") %>
-                <%= link_to 'Delete', availability_path(avail), method: :delete %>
-        </p>
+        <p class="available-time">
+            <%@event.availabilities.each do |avail|%>
+                <%if avail.start.year == date.year && avail.start.month == date.month && avail.start.day == date.day%>
+                    <%= avail.start.localtime.strftime("%l:%M%P") %> - <%= avail.end.localtime.strftime("%l:%M%P") %>
+                    <%= link_to 'Delete', availability_path(avail), method: :delete %>
+                <% end %>
             <% end %>
-        <% end %>
+        </p>
     <% end %>
-</div>
 </div>
