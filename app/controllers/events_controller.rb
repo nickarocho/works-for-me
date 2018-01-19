@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     end
     
     def show
-        @invite_url = "http://#{request.host}:3000/events/#{params[:id]}/join"
+        @invite_url = "https://#{request.host}/events/#{params[:id]}/join"
     end
     
     def new
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     
     def edit
         @availabilities = Event.find(params[:id]).availabilities
-        @invite_url = "http://#{request.host}:3000/events/#{params[:id]}/join" 
+        @invite_url = "https://#{request.host}/events/#{params[:id]}/join" 
     end
     
     def create
