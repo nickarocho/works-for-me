@@ -13,8 +13,8 @@
                     <li class="avail-slots">
                         <%= avail.start.localtime.strftime("%c") %> - 
                         <%= avail.end.localtime.strftime("%c") %> |
-                        <%= link_to('Works For Me', availability_approveds_path(avail), class: "works", method: :post) if current_user.approveds.where(availability: avail).empty? %>
-                        <%= link_to("Doesn't Work For Me", approved_path(avail), method: :delete) if current_user.approveds.where(availability: avail).exists? %>
+                        <%= link_to(image_tag("https://i.imgur.com/4g1yqpE.png"), availability_approveds_path(avail), class: "works", method: :post) if current_user.approveds.where(availability: avail).empty? %>
+                        <%= link_to(image_tag("https://i.imgur.com/AAOW6CT.png"), approved_path(avail), method: :delete) if current_user.approveds.where(availability: avail).exists? %>
                     </li>
                 <% end %>
             </ul>
