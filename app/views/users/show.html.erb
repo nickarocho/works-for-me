@@ -1,5 +1,6 @@
 <div class="item1">
     <h1>Events I'm <strong>Attending</strong></h1>
+    <hr>
     <% if @events.length == 0 %>
         <h3>Hmm... no events here yet.<br>
             <p class="done"><%= link_to 'create one', new_event_path %></p>
@@ -7,17 +8,18 @@
     <% else %>
         <% @events.each do |e| %> 
             <h2>- <%= e.title %></h2>
-            <h3>Any of these times work for you?</h3>
+            <h3 id="timeWorks">Any of these times work for you?</h3>
             <ul>
                 <% e.availabilities.each do |avail| %>
                     <li class="avail-slots">
                         <%= avail.start.localtime.strftime("%c") %> - 
                         <%= avail.end.localtime.strftime("%c") %> |
-                        <%= link_to(image_tag("https://i.imgur.com/4g1yqpE.png"), availability_approveds_path(avail), class: "works", method: :post) if current_user.approveds.where(availability: avail).empty? %>
-                        <%= link_to(image_tag("https://i.imgur.com/AAOW6CT.png"), approved_path(avail), method: :delete) if current_user.approveds.where(availability: avail).exists? %>
+                        <%= link_to(image_tag("https://i.imgur.com/AAOW6CT.png"), availability_approveds_path(avail), method: :post) if current_user.approveds.where(availability: avail).empty? %>
+                        <%= link_to(image_tag("https://i.imgur.com/4g1yqpE.png"), approved_path(avail), method: :delete) if current_user.approveds.where(availability: avail).exists? %>
                     </li>
                 <% end %>
             </ul>
+            <hr>
         <% end %>
     <% end %>
 </div>

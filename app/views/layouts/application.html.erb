@@ -11,34 +11,43 @@
   <% current_uri = request.env['PATH_INFO'] %>
   <% list_of_paths = ['/login', '/logout', '/users/new', '/sessions', '/', '/users'] %>
   <% if !list_of_paths.include?(current_uri) %>
-    <header id="pageHeader">
-        <% if current_user %>
-            <p>
-              Welcome, <%= current_user.name %>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
+      <header id="pageHeader">
+          <% if current_user %>
+              <p>
+                Welcome, <%= current_user.name %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
+          <% else %>
+                <%= link_to 'Log In', login_path %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <%= link_to 'Sign Up', new_user_path %></p>
+          <% end %>
+              </p>
+      </header>
+      <article id="mainArticle">
+        <%= yield %>
+      </article>
+      <nav id="mainNav">
+        <h1>Dashboard</h1>
+        <h2>Event's I'm</h2>
+        <h3>- <%= link_to "Hosting", events_path %></h3>
+        <h3>- <%= link_to "Attending", profile_path %></h3>
+        <p class="create-btn"><%= link_to 'Create A New Event', new_event_path %></p>
+      </nav>
+      <footer id="pageFooter"><img src="https://i.imgur.com/H4qj2sI.png" /></footer>
+      <footer id="mobileFooter">
+        <div><%= link_to "Hosting", events_path %></div>
+        <div><%= link_to "Attending", profile_path %></div>
+        <div><%= link_to 'Create A New Event', new_event_path %></div>
+        <div>
               <%= link_to 'Log Out', session_path('dummy'), method: :delete %>
-        <% else %>
-              <%= link_to 'Log In', login_path %>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <%= link_to 'Sign Up', new_user_path %></p>
-        <% end %>
             </p>
-    </header>
-    <article id="mainArticle">
-      <%= yield %>
-    </article>
-    <nav id="mainNav">
-      <h1>Dashboard</h1>
-      <h2>Event's I'm</h2>
-      <h3>- <%= link_to "Hosting", events_path %></h3>
-      <h3>- <%= link_to "Attending", profile_path %></h3>
-      <p class="create-btn"><%= link_to 'Create A New Event', new_event_path %></h3>
-    </nav>
-    <footer id="pageFooter"><img src="https://i.imgur.com/H4qj2sI.png" /></footer>
+        </div>
+      </footer>
   <% else %>
     <body class="alt">
       <%= yield %>
     </body>
   <% end %>
-</body>
+  </body>
 </html>

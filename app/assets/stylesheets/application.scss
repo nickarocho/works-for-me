@@ -33,7 +33,11 @@ body.alt {
   font-weight: 300;
 }
 
-header, footer, article, nav, div {
+#mobileFooter {
+  display: none;
+}
+
+header, article, nav, div {
   padding: 20px;  
   background: white;
 }
@@ -52,6 +56,7 @@ header, footer, article, nav, div {
 #pageFooter {
   grid-area: footer;
   text-align: center;
+  padding: 10px;
   background-color: #113844;
   color: white;
 }
@@ -131,6 +136,10 @@ h3 {
   letter-spacing: 2px;
 }
 
+h3#timeWorks {
+  color:  #F03B3D;
+}
+
 th {
   padding: 20px 60px;
   text-align: left;
@@ -160,6 +169,7 @@ a {
 }
 
 a:hover {
+  cursor: pointer;
   color: rgba(240, 59, 62, 0.646)
 }
 
@@ -284,6 +294,7 @@ div.home-button {
   text-transform: uppercase;
   letter-spacing: 2px;
   border-radius: 10px;
+  padding: 10px !important;
 }
 
 div.home-button:hover {
@@ -446,5 +457,88 @@ p.submit {
     }
     h2, a {
         font-size: 16px;
+    }
+    body { 
+      display: grid;
+      grid-template-areas:
+        "article article article"
+        "footer footer footer";
+      grid-template-rows: 1fr 60px;
+      grid-template-columns: 20% 1fr;
+      grid-gap: 5px;
+      height: 100vh;
+      margin: 0;
+      background-color: #B5B5B5;
+      font-family: ff-enzo-web, sans-serif;
+      font-style: normal;
+      font-weight: 300;
+    }
+    
+    body.alt {
+      grid-template-rows: 1fr;
+      grid-template-columns: 10% 1fr 10%;
+    }
+
+    article#login {
+      width: 80%;
+      margin: auto;
+      height: 80vh;
+    }
+
+    #mainNav { 
+      display: none;
+    }
+
+    #pageFooter {
+      display: none;
+    }
+
+    #pageHeader {
+      display: none;
+    }
+
+    #mobileFooter {
+      display: flex;
+      position: fixed;
+      margin: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      background-color: #113844;
+      color: white;
+    }
+    
+    #mobileFooter div {
+      grid-area: div;
+      background-color: #113844;
+      border: 2px solid black;
+      text-align: center;
+      margin: 0 auto;
+      height: 100%;
+      width: 100%;
+    }
+
+    #mobileFooter div {
+      cursor: pointer;
+      background-color: #113844;
+    }
+
+    #mobileFooter a {
+      display: inline-block;
+      margin-top: 0;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      padding-top: 21px;
+    }
+
+    div {
+      padding: 0;
+    }
+
+    #mainArticle {
+      padding-bottom: 100px;
     }
 }
