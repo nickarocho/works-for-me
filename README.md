@@ -24,6 +24,7 @@ BAM!
 
 ## Built With
 * Ruby on Rails
+* PostgreSQL
 * HTML
 * CSS (CSS-Grid & Flexbox)
 * Deployed on Heroku
